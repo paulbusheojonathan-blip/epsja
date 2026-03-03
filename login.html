@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion | Saint Joseph Artisan</title>
+    <style>
+        /* Couleurs et variables */
+        :root {
+            --vert: #006600;
+            --or: #C5A059;
+            --marron: #5D4037;
+            --ivoire: #FDFCF0;
+            --gris-clair: #f3f4f6;
+            --texte-gris: #6b7280;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+        }
+
+        .auth-page-bg {
+            min-height: screen;
+            background: linear-gradient(rgba(0, 102, 0, 0.85), rgba(93, 64, 55, 0.85)), 
+                        url('image/image1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Utilitaire Flex et Spacing */
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .flex-grow { flex-grow: 1; }
+
+        /* Card Style */
+        .glass-card { 
+            background: rgba(253, 252, 240, 0.98); 
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 400px;
+            border-top: 8px solid var(--or);
+        }
+
+        /* Typography */
+        .text-center { text-align: center; }
+        .uppercase { text-transform: uppercase; }
+        .italic { font-style: italic; }
+        .font-bold { font-weight: 700; }
+        .font-black { font-weight: 900; }
+
+        /* Form elements */
+        input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            margin-top: 0.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--vert);
+            box-shadow: 0 0 0 3px rgba(0, 102, 0, 0.1);
+        }
+
+        label {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--texte-gris);
+            letter-spacing: 0.1em;
+        }
+
+        .btn-primary {
+            background: var(--vert);
+            color: white;
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 1.5rem;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover { background: #004d00; }
+
+        .btn-or {
+            background: var(--or);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #f3f4f6;
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding-bottom: 1rem;
+            font-size: 10px;
+            font-weight: 700;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: #9ca3af;
+            cursor: pointer;
+            letter-spacing: 0.1em;
+        }
+
+        .tab-btn.active {
+            color: var(--vert);
+            border-bottom-color: var(--vert);
+        }
+
+        /* Navigation haut */
+        .nav-back {
+            padding: 1.5rem;
+            text-decoration: none;
+            color: rgba(255,255,255,0.9);
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .hidden-form { display: none; }
+        
+        .step-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .dot { height: 4px; width: 32px; background: #e5e7eb; border-radius: 99px; transition: 0.3s; }
+        .dot.active { background: var(--vert); }
+
+        .svg-icon { width: 16px; height: 16px; fill: currentColor; margin-right: 8px; }
+    </style>
+</head>
+<body class="auth-page-bg">
+
+    <a href="index.html" class="nav-back uppercase">
+        <svg class="svg-icon" viewBox="0 0 448 512" style="fill: white;"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        Retour à l'accueil
+    </a>
+
+    <div class="flex-grow flex items-center justify-center">
+        <div class="glass-card">
+            <div class="text-center" style="margin-bottom: 1.5rem;">
+                <img src="image/logo/logo_epsja.png" alt="Logo" style="height: 64px; margin-bottom: 0.75rem;">
+                <h2 style="color: var(--vert); text-transform: uppercase; font-weight: 900; font-style: italic; font-size: 1.5rem;">Portail Étudiant</h2>
+                <p style="color: var(--or); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;">Excellence & Discipline</p>
+            </div>
+
+            <div class="tabs">
+                <button id="tab-login" onclick="switchForm('login')" class="tab-btn active">CONNEXION</button>
+                <button id="tab-signup" onclick="switchForm('signup')" class="tab-btn">CRÉER COMPTE</button>
+            </div>
+
+            <form id="form-login" class="flex flex-col">
+                <div style="margin-bottom: 1.25rem;">
+                    <label class="uppercase">Email Institutionnel</label>
+                    <input type="email" required placeholder="nom.prenom@stjoseph.ht">
+                </div>
+                <div style="margin-bottom: 0.5rem;">
+                    <label class="uppercase">Mot de passe</label>
+                    <input type="password" required placeholder="••••••••">
+                </div>
+                <div style="text-align: right; margin-bottom: 1rem;">
+                    <a href="#" style="color: var(--or); font-size: 10px; font-weight: 700; text-decoration: none;" class="uppercase">Oublié ?</a>
+                </div>
+                <button type="submit" class="btn-primary">Se Connecter</button>
+            </form>
+
+            <form id="form-signup" class="hidden-form flex flex-col">
+                <div id="step-1">
+                    <div class="flex" style="gap: 1rem; margin-bottom: 1rem;">
+                        <div style="flex:1">
+                            <label class="uppercase">Prénom</label>
+                            <input type="text" placeholder="Jean">
+                        </div>
+                        <div style="flex:1">
+                            <label class="uppercase">Nom</label>
+                            <input type="text" placeholder="Pierre">
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label class="uppercase">Email</label>
+                        <input type="email" placeholder="etudiant@mail.com">
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label class="uppercase">Téléphone</label>
+                        <input type="tel" placeholder="+509">
+                    </div>
+                    <button type="button" onclick="nextStep(2)" class="btn-primary">Suivant</button>
+                </div>
+
+                <div id="step-2" class="hidden-form">
+                    <div style="margin-bottom: 1.5rem;">
+                        <label class="uppercase">Mot de passe</label>
+                        <input type="password" placeholder="••••••••">
+                        <p style="font-size: 10px; color: #9ca3af; margin-top: 0.5rem; font-style: italic;">8 caractères minimum.</p>
+                    </div>
+                    <div class="flex" style="gap: 0.75rem;">
+                        <button type="button" onclick="nextStep(1)" class="btn-primary" style="background: #e5e7eb; color: #6b7280; flex: 1;">Retour</button>
+                        <button type="submit" class="btn-or" style="flex: 2;">Terminer</button>
+                    </div>
+                </div>
+
+                <div class="step-dots">
+                    <div id="dot-1" class="dot active"></div>
+                    <div id="dot-2" class="dot"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer style="padding: 2rem; text-align: center;">
+        <p style="color: white; opacity: 0.7; font-size: 10px; font-weight: 700; letter-spacing: 0.1em;" class="uppercase italic">
+            © 2026 École Professionnelle Saint Joseph Artisan
+        </p>
+    </footer>
+
+    <script>
+        function switchForm(type) {
+            const loginForm = document.getElementById('form-login');
+            const signupForm = document.getElementById('form-signup');
+            const tabLogin = document.getElementById('tab-login');
+            const tabSignup = document.getElementById('tab-signup');
+
+            if (type === 'login') {
+                loginForm.classList.remove('hidden-form');
+                signupForm.classList.add('hidden-form');
+                tabLogin.classList.add('active');
+                tabSignup.classList.remove('active');
+            } else {
+                loginForm.classList.add('hidden-form');
+                signupForm.classList.remove('hidden-form');
+                tabLogin.classList.remove('active');
+                tabSignup.classList.add('active');
+            }
+        }
+
+        function nextStep(step) {
+            const s1 = document.getElementById('step-1');
+            const s2 = document.getElementById('step-2');
+            const d1 = document.getElementById('dot-1');
+            const d2 = document.getElementById('dot-2');
+
+            if (step === 2) {
+                s1.classList.add('hidden-form');
+                s2.classList.remove('hidden-form');
+                d1.classList.remove('active');
+                d2.classList.add('active');
+            } else {
+                s2.classList.add('hidden-form');
+                s1.classList.remove('hidden-form');
+                d2.classList.remove('active');
+                d1.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
