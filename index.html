@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St Joseph Artisan | École Professionnelle d'Excellence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        
+        /* Background Hero */
+        .hero-bg {
+            background: linear-gradient(rgba(15, 76, 129, 0.85), rgba(15, 76, 129, 0.85)), 
+                        url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80');
+            background-size: cover; background-position: center;
+        }
+
+        /* Effet de transparence progressive pour les sections Qui sommes-nous / Admission */
+        .grad-bg {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+        .grad-overlay {
+            background: linear-gradient(to right, white 40%, rgba(255, 255, 255, 0.2) 100%);
+        }
+
+        /* Menu Latéral */
+        #mobile-sidebar { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
+        #mobile-sidebar.open { transform: translateX(0); }
+        #overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease-in-out; }
+        #overlay.active { opacity: 1; pointer-events: auto; }
+
+        .transition-card:hover { transform: translateY(-10px); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 overflow-x-hidden">
+
+    <div id="overlay" onclick="toggleMenu(false)" class="fixed inset-0 bg-black/60 z-[60]"></div>
+
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center space-x-3">
+                    <img src="image/logo/logo_epsja.png" alt="Logo EPSJA" class="h-14 w-auto">
+                    <div>
+                        <h1 class="font-bold text-xl text-[#0F4C81] leading-tight">Saint Joseph Artisan</h1>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-500 font-semibold">École Professionnelle</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 items-center font-medium text-gray-600 text-sm">
+                    <a href="#accueil" class="hover:text-[#0F4C81]">Accueil</a>
+                    <a href="apropos.html" class="hover:text-[#0F4C81]">À propos</a>
+                    <a href="#formations" class="hover:text-[#0F4C81]">Formations</a>
+                    <a href="#admission" class="hover:text-[#0F4C81]">Admission</a>
+                    <a href="#contact" class="hover:text-[#0F4C81]">Contact</a>
+                    <a href="login.html" class="bg-[#FFC300] text-[#0F4C81] px-6 py-2 rounded-full font-bold shadow-md hover:bg-yellow-500 transition">S'inscrire</a>
+                </div>
+
+                <button onclick="toggleMenu(true)" class="md:hidden text-[#0F4C81] text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-sidebar" class="fixed top-0 right-0 h-full w-72 bg-white z-[70] shadow-2xl p-6 flex flex-col">
+        <button onclick="toggleMenu(false)" class="text-2xl text-gray-500 self-end mb-10"><i class="fas fa-times"></i></button>
+        <div class="flex flex-col space-y-6 font-bold text-lg text-[#0F4C81]">
+            <a href="#accueil" onclick="toggleMenu(false)">Accueil</a>
+            <a href="apropos.html">À propos</a>
+            <a href="#formations" onclick="toggleMenu(false)">Formations</a>
+            <a href="#admission" onclick="toggleMenu(false)">Admission</a>
+            <a href="#contact" onclick="toggleMenu(false)">Contact</a>
+            <a href="login.html" class="bg-[#FFC300] text-center py-4 rounded-xl shadow-lg mt-4">S'inscrire</a>
+        </div>
+    </div>
+
+    <header id="accueil" class="hero-bg min-h-[85vh] flex items-center text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="max-w-3xl text-left">
+                <span class="bg-[#FFC300] text-[#0F4C81] px-4 py-1 rounded-full text-sm font-bold uppercase mb-6 inline-block">Accréditée par l'INFP</span>
+                <h2 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                    Former des Techniciens honnêtes et compétents en seulement <span class="text-[#FFC300]">10 mois</span>
+                </h2>
+                <p class="text-xl mb-10 text-blue-100 font-light italic italic">"Et vous, vous faites quoi l’année prochaine ?"</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#admission" class="bg-[#FFC300] text-[#0F4C81] text-center px-10 py-4 rounded-xl font-extrabold text-lg shadow-2xl hover:bg-yellow-500 transition">S'INSCRIRE MAINTENANT</a>
+                    <a href="#formations" class="bg-white/10 backdrop-blur-md text-white text-center border border-white/30 px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition">Nos filières</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="apropos" class="grad-bg min-h-[500px] flex items-center overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80');">
+        <div class="grad-overlay absolute inset-0"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="max-w-2xl py-20">
+                <h3 class="text-sm font-bold text-[#FFC300] uppercase tracking-widest mb-4">Qui sommes-nous ?</h3>
+                <h2 class="text-4xl font-extrabold text-[#0F4C81] mb-8 leading-tight italic">Un engagement pour l'employabilité immédiate</h2>
+                <p class="text-gray-700 text-lg leading-relaxed mb-8">
+                    Notre institution s'engage à transformer les talents en métiers. Par une pédagogie basée sur l'action et l'intégrité, nous formons les techniciens dont Haïti a besoin pour son développement technique et industriel.
+                </p>
+                <a href="apropos.html" class="inline-block bg-[#0F4C81] text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-800 transition shadow-lg">En savoir plus sur nous</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="formations" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl font-extrabold text-[#0F4C81] mb-6 italic">Nos Filières d'Avenir</h2>
+                <p class="text-gray-600">Choisissez une expertise technique de pointe. 10 mois de formation intensive (Lundi au Vendredi).</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div onclick="showProgram(0)" class="bg-white p-8 rounded-2xl shadow-xl border-b-4 border-blue-500 transition-card cursor-pointer">
+                    <div class="text-4xl text-blue-500 mb-6"><i class="fas fa-network-wired"></i></div>
+                    <h3 class="text-xl font-bold text-[#0F4C81] mb-4">Réseau Informatique</h3>
+                    <p class="text-gray-500 text-sm mb-6 italic">Installation et maintenance de réseaux LAN/WAN.</p>
+                    <button class="text-[#0F4C81] font-bold text-sm hover:underline">Voir le programme →</button>
+                </div>
+                <div onclick="showProgram(1)" class="bg-white p-8 rounded-2xl shadow-xl border-b-4 border-green-500 transition-card cursor-pointer">
+                    <div class="text-4xl text-green-500 mb-6"><i class="fas fa-snowflake"></i></div>
+                    <h3 class="text-xl font-bold text-[#0F4C81] mb-4">Réfrigération</h3>
+                    <p class="text-gray-500 text-sm mb-6 italic">Maintenance de systèmes de climatisation.</p>
+                    <button class="text-[#0F4C81] font-bold text-sm hover:underline">Voir le programme →</button>
+                </div>
+                <div onclick="showProgram(2)" class="bg-white p-8 rounded-2xl shadow-xl border-b-4 border-yellow-500 transition-card cursor-pointer">
+                    <div class="text-4xl text-yellow-500 mb-6"><i class="fas fa-bolt"></i></div>
+                    <h3 class="text-xl font-bold text-[#0F4C81] mb-4">Électricité Solaire</h3>
+                    <p class="text-gray-500 text-sm mb-6 italic">Systèmes photovoltaïques et installations.</p>
+                    <button class="text-[#0F4C81] font-bold text-sm hover:underline">Voir le programme →</button>
+                </div>
+                <div onclick="showProgram(3)" class="bg-white p-8 rounded-2xl shadow-xl border-b-4 border-orange-500 transition-card cursor-pointer">
+                    <div class="text-4xl text-orange-500 mb-6"><i class="fas fa-faucet"></i></div>
+                    <h3 class="text-xl font-bold text-[#0F4C81] mb-4">Plomberie</h3>
+                    <p class="text-gray-500 text-sm mb-6 italic">Réseaux hydrauliques et sanitaires.</p>
+                    <button class="text-[#0F4C81] font-bold text-sm hover:underline">Voir le programme →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="program-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-8 relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-red-500 text-2xl">×</button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <section id="admission" class="grad-bg min-h-[500px] flex items-center overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80');">
+        <div class="grad-overlay absolute inset-0"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="max-w-2xl py-20">
+                <h2 class="text-4xl font-extrabold text-[#0F4C81] mb-10 italic">Processus d'Admission</h2>
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-6">
+                        <div class="w-12 h-12 bg-[#FFC300] text-[#0F4C81] rounded-full flex items-center justify-center font-black text-xl shrink-0">1</div>
+                        <p class="text-lg font-semibold">Inscription en ligne ou en présentiel</p>
+                    </div>
+                    <div class="flex items-center space-x-6">
+                        <div class="w-12 h-12 bg-gray-200 text-[#0F4C81] rounded-full flex items-center justify-center font-black text-xl shrink-0">2</div>
+                        <p class="text-lg font-semibold">Validation du dossier</p>
+                    </div>
+                    <div class="flex items-center space-x-6">
+                        <div class="w-12 h-12 bg-gray-200 text-[#0F4C81] rounded-full flex items-center justify-center font-black text-xl shrink-0">3</div>
+                        <p class="text-lg font-semibold">Examen d'Entrée (Français, Maths, Culture Générale)</p>
+                    </div>
+                    <div class="flex items-center space-x-6">
+                        <div class="w-12 h-12 bg-gray-200 text-[#0F4C81] rounded-full flex items-center justify-center font-black text-xl shrink-0">4</div>
+                        <p class="text-lg font-semibold">Paiement des Frais d'Entrée</p>
+                    </div>
+                </div>
+                <a href="inscription.html" class="inline-block mt-10 bg-[#FFC300] text-[#0F4C81] px-10 py-4 rounded-xl font-extrabold text-lg shadow-xl hover:scale-105 transition italic">Commencer l'inscription</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-extrabold text-[#0F4C81] mb-12 italic">Paroles de diplômés</h2>
+            <div id="testimonial-box" class="bg-blue-50 p-12 rounded-3xl min-h-[350px] flex flex-col items-center justify-center relative transition-all duration-500">
+                </div>
+            <div class="flex justify-center space-x-4 mt-8">
+                <button onclick="setTestimonial(0)" class="t-btn w-3 h-3 rounded-full bg-gray-300"></button>
+                <button onclick="setTestimonial(1)" class="t-btn w-3 h-3 rounded-full bg-gray-300"></button>
+                <button onclick="setTestimonial(2)" class="t-btn w-3 h-3 rounded-full bg-gray-300"></button>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-gray-900 text-gray-400 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-left">
+                <div class="flex flex-col space-y-4">
+                    <img src="image/logo/logo_epsja.png" alt="Logo" class="h-16 w-auto brightness-0 invert self-start">
+                    <h4 class="text-white font-bold text-lg italic">Saint Joseph Artisan</h4>
+                    <p class="text-sm italic">Transformer le talent en métier. Accrédité par l'INFP.</p>
+                </div>
+                
+                <div class="flex flex-col space-y-4">
+                    <h4 class="text-white font-bold text-lg mb-2 underline decoration-[#FFC300] decoration-2 underline-offset-8 italic">Navigation</h4>
+                    <div class="flex flex-col space-y-2 text-sm italic">
+                        <a href="#accueil" class="hover:text-white">Accueil</a>
+                        <a href="apropos.html" class="hover:text-white">À Propos</a>
+                        <a href="#formations" class="hover:text-white">Nos Formations</a>
+                        <a href="#admission" class="hover:text-white">Admission</a>
+                        <a href="#contact" class="hover:text-white">Contact</a>
+                    </div>
+                </div>
+
+                <div class="flex flex-col space-y-4">
+                    <h4 class="text-white font-bold text-lg mb-2 underline decoration-[#FFC300] decoration-2 underline-offset-8 italic">Nous joindre</h4>
+                    <p class="text-sm"><i class="fas fa-map-marker-alt text-[#FFC300] mr-3"></i> Canapé-vert, Haïti</p>
+                    <p class="text-sm"><i class="fas fa-phone-alt text-[#FFC300] mr-3"></i> +509 1234 5678</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-xl hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-xl hover:text-[#25D366]"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-16 pt-8 border-t border-gray-800 text-center text-xs italic italic">
+                © 2026 École Professionnelle Saint Joseph Artisan. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Latéral
+        function toggleMenu(open) {
+            document.getElementById('mobile-sidebar').classList.toggle('open', open);
+            document.getElementById('overlay').classList.toggle('active', open);
+            document.body.style.overflow = open ? 'hidden' : '';
+        }
+
+        // Modales Filières
+        const programs = [
+            {
+                title: "Réseau Informatique",
+                details: ["Bases informatique", "Réseaux LAN/WAN", "Cisco Routing", "Maintenance PC"],
+                page: "filiere-reseau.html"
+            },
+            {
+                title: "Réfrigération",
+                details: ["Thermodynamique", "Climatisation Split", "Froid industriel", "Soudure cuivre"],
+                page: "filiere-froid.html"
+            },
+            {
+                title: "Électricité Solaire",
+                details: ["Electricité AC/DC", "Panneaux Solaires", "Onduleurs/Batteries", "Schémas électriques"],
+                page: "filiere-solaire.html"
+            },
+            {
+                title: "Plomberie",
+                details: ["Plans hydrauliques", "Soudure tuyauterie", "Sanitaire industriel", "Pompes"],
+                page: "filiere-plomberie.html"
+            }
+        ];
+
+        function showProgram(id) {
+            const p = programs[id];
+            const modal = document.getElementById('program-modal');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <h3 class="text-3xl font-black text-[#0F4C81] mb-6 italic">${p.title}</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
+                    ${p.details.map(d => `<li class="flex items-center text-gray-700 text-sm"><i class="fas fa-caret-right text-blue-500 mr-2"></i> ${d}</li>`).join('')}
+                </ul>
+                <a href="${p.page}" class="block w-full text-center bg-[#0F4C81] text-white py-4 rounded-xl font-bold hover:bg-blue-800 transition shadow-xl uppercase">Voir la fiche complète</a>
+            `;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            document.getElementById('program-modal').classList.add('hidden');
+        }
+
+        // Carrousel Témoignages
+        const testimonials = [
+            { name: "Jean Baptiste", role: "Promo 2023 - Electricité", text: "Une formation intense qui m'a permis d'ouvrir mon propre atelier après seulement 10 mois.", img: "https://i.pravatar.cc/150?u=1" },
+            { name: "Marie Lucie", role: "Promo 2024 - Informatique", text: "L'équipement technique à l'école est exceptionnel. On apprend vraiment par la pratique.", img: "https://i.pravatar.cc/150?u=2" },
+            { name: "Pierre Richard", role: "Promo 2022 - Froid", text: "Le diplôme accrédité m'a ouvert les portes des plus grands hôtels de Port-au-Prince.", img: "https://i.pravatar.cc/150?u=3" }
+        ];
+        
+        let currentT = 0;
+        function setTestimonial(index) {
+            currentT = index;
+            const t = testimonials[index];
+            const box = document.getElementById('testimonial-box');
+            const btns = document.querySelectorAll('.t-btn');
+            
+            btns.forEach((b, i) => b.style.backgroundColor = i === index ? '#0F4C81' : '#D1D5DB');
+            
+            box.style.opacity = 0;
+            setTimeout(() => {
+                box.innerHTML = `
+                    <div class="w-24 h-24 rounded-full border-4 border-[#FFC300] overflow-hidden mb-6">
+                        <img src="${t.img}" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-lg italic text-gray-700 mb-6 max-w-lg italic">"${t.text}"</p>
+                    <h5 class="font-bold text-[#0F4C81] text-xl">${t.name}</h5>
+                    <p class="text-sm text-[#FFC300] font-bold">${t.role}</p>
+                `;
+                box.style.opacity = 1;
+            }, 300);
+        }
+
+        // Auto-play témoins
+        setInterval(() => {
+            currentT = (currentT + 1) % testimonials.length;
+            setTestimonial(currentT);
+        }, 6000);
+        setTestimonial(0);
+    </script>
+</body>
+</html>
